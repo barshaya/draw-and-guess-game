@@ -1,4 +1,7 @@
 .room {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   background: #f4f4f4;
   margin: 5px;
   padding: 10px 20px;
@@ -7,10 +10,4 @@
 
 .room.full {
   background-color: rgb(190, 184, 184);
-}
-
-.room h3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }

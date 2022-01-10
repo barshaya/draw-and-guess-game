@@ -5,10 +5,10 @@ const Room = ({ room, onToggle }) => {
   return (
     <div
       className={`room ${room.numOfMembers === 2 ? "full" : ""}`}
-      onDoubleClick={() => onToggle(room.id)}
+      onDoubleClick={()=>onToggle(room.id)}
     >
       <h3>{room.name}</h3>
-      <p>{room.numOfMembers}</p>
+      <span>{room.numOfMembers}</span>
     </div>
   );
 };
