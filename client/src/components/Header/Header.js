@@ -5,7 +5,7 @@ const Header = ({name}) => {
   
     return (
         <header>
-           <h1>Draw & Guess</h1>
+           <h1><span className='h1-draw'>Draw&</span><span className='h1-guess'>Guess</span></h1>
            <div className='userName'>{name}</div>
         </header>
     )
