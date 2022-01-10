@@ -1,19 +1,19 @@
-header{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: baseline;
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
 }
 
-.userName{
-    padding: 5px;
-    border: 3px dashed purple;
+.userName {
+  padding: 5px;
+  border: 3px dashed purple;
 }
 
-.h1-draw{
-    color:purple;
+.h1-draw {
+  color: purple;
 }
 
-.h1-guess{
-    color: rgb(247, 243, 18);
+.h1-guess {
+  color: rgb(247, 243, 18);
 }
