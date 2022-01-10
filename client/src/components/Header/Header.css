@@ -1,0 +1,11 @@
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.userName{
+    padding: 10px;
+    border: 5px solid yellow;
+}
