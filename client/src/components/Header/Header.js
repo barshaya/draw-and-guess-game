@@ -11,10 +11,7 @@ const Header = ({name}) => {
     )
 }
 
-
 Header.prototype={
     name: PropTypes.string.isRequired
 }
-
-
 export default Header
