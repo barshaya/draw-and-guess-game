@@ -3,6 +3,7 @@ import { useState } from "react";
 //import Header from "./components/Header/Header";
 import Login from "./pages/Login/Login";
 import Room from "./components/Room/Room";
+import Rooms from './components/Rooms/Rooms';
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -28,21 +29,19 @@ function App() {
     setUserName(name);
   };
 
+  const toggle= (id)=>{
+    console.log(id);
+  };
+
   return (
     <div className="App">
       {userName === "" ? (
         <Login onAddName={onAddName}></Login>
       ) : (
         //<Header name={userName}></Header>
-        <>
-          {rooms.map((room) => (
-            <Room
-              key={room.id}
-              room={room}
-              onToggle={(id) => console.log(id)}
-            />
-          ))}
-        </>
+        Rooms.length > 0 ? 
+          <Rooms rooms={rooms} 
+          onToggle={toggle}/> : 'No Rooms To Show'
       )}
     </div>
   );
