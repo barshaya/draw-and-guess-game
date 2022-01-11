@@ -1,0 +1,14 @@
+.canvas {
+  border: 2px solid black;
+}
+
+.canvas-tool-item {
+  height: 1.5rem;
+  border: 2px solid red;
+  width: 2.5rem;
+  font-size: 0.7rem;
+}
+
+.canvas-tools {
+  display: flex;
+}
