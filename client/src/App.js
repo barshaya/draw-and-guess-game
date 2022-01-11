@@ -12,10 +12,10 @@ function App() {
 
   return (
     <div className="App">
-      {userName === "" ? (
-        <Login onAddName={onAddName}></Login>
-      ) : <Home userName={userName}></Home>
-      }
+      {userName === "" ? <Login onAddName={onAddName}/> : <Home userName={userName}/>}
+      
+      {/* {userName && <Login onAddName={onAddName}></Login>}
+      {!userName && <Home userName={userName}></Home>} */}
     </div>
   );
 }
