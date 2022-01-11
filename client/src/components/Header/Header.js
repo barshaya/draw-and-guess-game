@@ -8,7 +8,7 @@ const Header = ({ userName }) => {
         <span className="h1-draw">Draw&</span>
         <span className="h1-guess">Guess</span>
       </h1>
-      <div className="userName">{userName}</div>
+      <div className="username">{userName}</div>
     </header>
   );
 };

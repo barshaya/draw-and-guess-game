@@ -5,9 +5,10 @@ header {
   align-items: baseline;
 }
 
-.userName {
+.username {
   margin-left: 2rem;;
   border: 3px dashed purple;
+  padding: 0.2rem;
 }
 
 .h1-draw {

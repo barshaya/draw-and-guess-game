@@ -9,5 +9,6 @@
 }
 
 .room.full {
-  background-color: rgb(190, 184, 184);
+  opacity: 0.5;
+  cursor: default;
 }
