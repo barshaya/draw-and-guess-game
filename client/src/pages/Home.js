@@ -4,9 +4,12 @@ import Button from "@mui/material/Button";
 import Rooms from "../components/Rooms/Rooms";
 import Header from "../components/Header/Header";
 import AddRoom from './AddRoom/AddRoom'
+import WaitingRoom from './WaitingRoom/WaitingRoom'
 
 const Home = ({ userName }) => {
   const [showAddRoom, setShowAddRoom] = useState(false)
+  const [showWaitingRoom, setShowWaitingRoom] = useState(false)
+
 
   const [rooms, setRooms] = useState([
     {
@@ -36,20 +39,23 @@ const Home = ({ userName }) => {
     const newRoom= {id,...room}
     setRooms([...rooms,newRoom])
     setShowAddRoom(false)
+    setShowWaitingRoom(true)
   }
 
   return (
     <div>
       <Header userName={userName}/>
-      {rooms.length > 0 && !showAddRoom &&
+      {rooms.length > 0 && !showAddRoom && !showWaitingRoom &&
         <Rooms rooms={rooms} onToggle={toggle} />}
-      {showAddRoom && <AddRoom onAdd={addRoom} />}
+      {showAddRoom && !showWaitingRoom && <AddRoom onAdd={addRoom} />}
+      {!showWaitingRoom &&
       <Button
         variant="outlined"
         color={showAddRoom ? 'success' : 'info'}
         onClick={()=> setShowAddRoom(!showAddRoom)}>
           {showAddRoom ? 'Cancel' : 'Create Room'}
-      </Button>
+      </Button>}
+      {showWaitingRoom && <WaitingRoom/>}
     </div>
   );
 };
