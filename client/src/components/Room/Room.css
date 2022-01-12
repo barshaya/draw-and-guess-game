@@ -1,16 +1,17 @@
-.room {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+.room-item {
   background: #f4f4f4;
   border-radius: 0.4rem;
-  margin: 5px;
-  padding: 10px 20px;
+  margin: 0.1rem;
+  padding: 0.3rem 0.5rem;
   cursor: pointer;
-  font-size: 0.8rem
+  font-size: 0.8rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border: none;
 }
 
-.room.full {
-  opacity: 0.5;
-  cursor: default;
+.room-item:active {
+  transform: scale(0.96);
 }
+
