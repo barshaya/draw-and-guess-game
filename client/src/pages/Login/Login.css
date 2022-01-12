@@ -3,8 +3,8 @@
   flex-direction: column;
   padding: 2rem;
   border: 2px solid purple;
-  align-items: center;
-  margin-top: 10rem;
+  height: 7rem;
+  margin: 5rem;
 }
 
 .username-input{
