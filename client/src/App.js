@@ -15,8 +15,8 @@ function App() {
 
   return (
     <div className="App">
-      {userName === "" ? <Login onAddName={onAddName}/> : <Home userName={userName}/>} 
-      {/* <Canvas canvasHeight={300} canvasWidth={385}/> */}
+      {/* {userName === "" ? <Login onAddName={onAddName}/> : <Home userName={userName}/>}  */}
+      <Canvas canvasHeight={300} canvasWidth={385}/>
       {/* <Guess canvasHeight={300} canvasWidth={385}/> */}
     </div>
   );
