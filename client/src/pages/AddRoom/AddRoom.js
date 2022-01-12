@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import './AddRoom.css'
+import "./AddRoom.css";
 
 const AddRoom = ({ onAdd }) => {
   const [name, setName] = useState("");
@@ -18,18 +18,19 @@ const AddRoom = ({ onAdd }) => {
   };
 
   return (
-    <form className="add-form" onSubmit={onSubmit}>
-      <div className="form-control">
-        <label>Room</label>
-        <input
-          type="text"
-          placeholder="Add Room Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <input type="submit" value="save Room" className="btn btn-block" />
-    </form>
+    
+      <form className="add-form" onSubmit={onSubmit}>
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="Enter Room Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <input type="submit" value="Save Room" className="btn" />
+      </form>
+    
   );
 };
 export default AddRoom;

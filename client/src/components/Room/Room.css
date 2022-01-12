@@ -3,9 +3,11 @@
   justify-content: space-between;
   align-items: baseline;
   background: #f4f4f4;
+  border-radius: 0.4rem;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  font-size: 0.8rem
 }
 
 .room.full {
