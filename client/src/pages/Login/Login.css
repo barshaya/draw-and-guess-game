@@ -1,10 +1,11 @@
 .login-window {
   display: flex;
   flex-direction: column;
+  position: absolute;
   padding: 2rem;
   border: 2px solid purple;
   height: 7rem;
-  margin: 5rem;
+  top:30%;
 }
 
 .username-input{
