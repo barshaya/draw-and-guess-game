@@ -10,7 +10,6 @@ const Home = ({ userName }) => {
   const [showAddRoom, setShowAddRoom] = useState(false)
   const [showWaitingRoom, setShowWaitingRoom] = useState(false)
 
-
   const [rooms, setRooms] = useState([
     {
       id: 1,
