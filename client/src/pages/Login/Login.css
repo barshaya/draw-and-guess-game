@@ -1,11 +1,8 @@
 .login-window {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 2rem;
   border: 2px solid purple;
-  justify-content: center;
-  text-align: center;
   align-items: center;
   margin-top: 10rem;
 }

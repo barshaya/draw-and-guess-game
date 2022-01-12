@@ -12,6 +12,7 @@ const Login = ({ onAddName }) => {
         focused
       />
       <Button
+        sx={{mt:2}}
         variant="outlined"
         color="secondary"
         onClick={() => onAddName(document.getElementById("userName").value)}
