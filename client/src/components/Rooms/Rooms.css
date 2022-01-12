@@ -1,0 +1,4 @@
+.rooms-container{
+    display: flex;
+    flex-direction: column;
+}

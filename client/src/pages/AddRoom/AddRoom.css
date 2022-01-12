@@ -1,46 +1,37 @@
+.add-room-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 4rem;
+}
+
 .add-form {
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;  
 }
 
-.form-control {
-  margin: 20px 0;
-}
-
-.form-control label {
-  display: block;
-}
-
-.form-control input {
-  width: 100%;
-  height: 40px;
-  margin: 5px;
-  padding: 3px 7px;
-  font-size: 17px;
+input {
+  height: 2rem;
+  margin-bottom: 0.4rem;
+  padding-left: 0.6rem;
+  font-size: 0.9rem;
+  border-radius: 0.3rem;
+  border: none;
 }
 
 .btn {
-  display: inline-block;
   background: #000;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
+  border-radius: 0.3rem;
   cursor: pointer;
-  text-decoration: none;
-  font-size: 15px;
+  font-size: 0.9rem;
   font-family: inherit;
 }
 
-.btn:focus {
-  outline: none;
-}
-
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.96);
 }
 
-.btn-block {
-  display: block;
-  width: 100%;
-}

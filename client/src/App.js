@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Login from "./pages/Login/Login";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 
 import Canvas from './components/Canvas/Canvas'
 import Guess from './pages/Guess'
