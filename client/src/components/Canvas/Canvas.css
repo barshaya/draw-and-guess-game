@@ -1,18 +1,19 @@
-.canvas {
+.canvas-screen {
   border: 2px solid black;
+  width:100%;
 }
 
 .canvas-tool-item {
   height: 5rem;
   border: 2px solid red;
-  width: 2.5rem;
+  width:100%;
   font-size: 0.7rem;
   display: flex;
   flex-direction: column;
 }
 
 .canvas-tool-item input, button{
-  width: 2rem;
+  width: 1.7rem;
   font-size:0.7rem;
 }
 
