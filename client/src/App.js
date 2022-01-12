@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home";
-import Canvas from './components/Canvas/Canvas'
+import Canvas from './pages/DrawScreen/DrawScreen'
 
 function App() {
   const [userName, setUserName] = useState("");

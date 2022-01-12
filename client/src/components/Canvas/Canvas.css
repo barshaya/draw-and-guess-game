@@ -3,11 +3,20 @@
 }
 
 .canvas-tool-item {
-  height: 1.5rem;
+  height: 5rem;
   border: 2px solid red;
   width: 2.5rem;
   font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
 }
+
+.canvas-tool-item input, button{
+  width: 2rem;
+  font-size:0.7rem;
+}
+
+
 
 .canvas-tools {
   display: flex;
