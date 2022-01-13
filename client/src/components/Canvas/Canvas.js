@@ -5,15 +5,14 @@ import React, { useState, useRef } from "react";
 import "./Canvas.css";
 import Header from "../Header/Header";
 
-const Canvas = ({ canvasHeight, canvasWidth }) => {
+const Canvas = () => {
   const [color, setColor] = useState("#000");
   const [brushRadius, setBrushRadius] = useState(2);
 
-  const canvasRef = useRef();
+  const canvasRef = useRef(null);
   let canvasObject;
 
   const changeColor = (color) => {
-    console.log("hi");
     setColor(color);
   };
 
@@ -46,8 +45,10 @@ const Canvas = ({ canvasHeight, canvasWidth }) => {
     canvasObject.loadSaveData(string);
   };
 
+  const CanvasHeight = window.screen.height - 165;
+
   return (
-    <div className="canvas-screen">
+    <div className="canvas-container">
       <Header/>
       <div className="canvas-tools">
         <div className="canvas-tool-item">
@@ -93,8 +94,8 @@ const Canvas = ({ canvasHeight, canvasWidth }) => {
         brushRadius={brushRadius}
         lazyRadius={1}
         hideGrid={true}
-        canvasWidth={canvasWidth}
-        canvasHeight={canvasHeight}
+        canvasWidth={window.screen.width}
+        canvasHeight={CanvasHeight}
         ref={canvasRef}
       />
     </div>
