@@ -1,12 +1,13 @@
 import Loading from "@mui/material/CircularProgress";
-import GameScreen from "../GameScreen/GameScreen";
 
-import gameScreen from '../GameScreen/GameScreen'
+import { useState } from "react";
+
+import GameScreen from "../GameScreen/GameScreen";
 
 import "./WaitingRoom.css"
 
 const WaitingRoom = () => {
-  const [gameStart, setGameStart] = useState(false);
+  const [gameStart, setGameStart] = useState(true);
 
   //function that check if the second player connect to the room (request to the server)
   //change gamestart state

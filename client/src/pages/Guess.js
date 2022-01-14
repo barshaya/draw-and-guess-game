@@ -1,15 +1,48 @@
 import CanvasDraw from "react-canvas-draw";
 
-import Header from "../components/Header/Header";
+import Loading from "@mui/material/CircularProgress";
 
-const Guess = ({ canvasHeight, canvasWidth }) => {
+import React, { useState ,useRef } from "react";
+
+
+const Guess = ({ waiting, getDrawingVideo}) => {
+  console.log('guess')
+
+  const [isWaiting, setIsWaiting] = useState(!waiting)
+  
+  const canvasRef = useRef(null);
+  let canvasObject;
+
+  const CanvasHeight = window.screen.height - 165;
+
+  const getDraw = () => {
+    canvasObject = canvasRef.current;
+    let dv = getDrawingVideo();
+    if(dv != null){
+      canvasObject.loadSaveData(dv);
+      setIsWaiting(!isWaiting)
+    }
+  }
+
   return (
-    <div>
-      <Header />
-      <CanvasDraw canvasWidth={canvasWidth} canvasHeight={canvasHeight} />
-      <div>guess</div>
-      <button>sumit</button>
-    </div>
+    <>
+      {!isWaiting && (
+        <div>
+          <button onClick={getDraw}>get</button>
+          <CanvasDraw
+            canvasWidth={window.screen.width}
+            canvasHeight={CanvasHeight}
+            ref={canvasRef}
+          />
+
+        </div>
+      )}
+      {isWaiting && 
+      <div>
+        <h3>Waiting for Drawing </h3>
+        <Loading />
+      </div>}
+    </>
   );
 };
 
