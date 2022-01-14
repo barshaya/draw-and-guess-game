@@ -5,7 +5,7 @@ import "./WaitingRoom.css"
 const WaitingRoom = () => {
   return (
     <div className="waiting-room">
-      <h1>Waiting For A Player</h1>
+      <h3>Waiting For A Player</h3>
       <Loading />
     </div>
   );

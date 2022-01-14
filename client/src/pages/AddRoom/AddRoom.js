@@ -1,36 +1,61 @@
 import { useState } from "react";
 
+import Button from "@mui/material/Button";
+
+import WaitingRoom from "../WaitingRoom/WaitingRoom"
+
 import "./AddRoom.css";
 
-const AddRoom = ({ onAdd }) => {
-  const [name, setName] = useState("");
+const AddRoom = ({ createRoom, switchScreens }) => {
+  const [roomName, setRoomName] = useState("");
+  const [showWaitingRoom, setShowWaitingRoom] = useState(false);
+
   const numOfMembers = 0;
 
-  const onSubmit = (e) => {
+  const starGame = (e) => {
     e.preventDefault();
-    if (!name) {
+    if (!roomName) {
       alert("please add name");
       return;
     }
-    onAdd({ name, numOfMembers });
-
-    setName("");
+    createRoom({ roomName, numOfMembers });
+    setShowWaitingRoom(true)
+    setRoomName("");
   };
 
   return (
-    
-      <form className="add-form" onSubmit={onSubmit}>
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Enter Room Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <input type="submit" value="Save Room" className="btn" />
-      </form>
-    
+    <div className="add-room-container">
+
+    {!showWaitingRoom &&
+    <>
+      <h3>Create New Room</h3>
+      <input
+        type="text"
+        placeholder="Enter Room Name"
+        value={roomName}
+        onChange={(e) => setRoomName(e.target.value)}
+      />
+
+      <Button
+        sx={{ width: 140, height: 20 }}
+        variant="contained"
+        color="secondary"
+        onClick={starGame}
+      >
+        Start Game
+      </Button>
+      <Button
+        sx={{ width: 100, height: 28, mt: 5 }}
+        variant="contained"
+        color="error"
+        onClick={switchScreens}
+      >
+        Cancel
+      </Button>
+      </>
+    }
+    {showWaitingRoom && <WaitingRoom/> }
+    </div>
   );
 };
 export default AddRoom;
