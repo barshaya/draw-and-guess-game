@@ -16,4 +16,5 @@ const Header = ({ userName }) => {
 Header.prototype = {
   name: PropTypes.string.isRequired,
 };
+
 export default Header;
