@@ -1,64 +1,58 @@
 import React from "react";
 import { useState } from "react";
-import Button from "@mui/material/Button";
 import Rooms from "../../components/Rooms/Rooms";
 import Header from "../../components/Header/Header";
-import AddRoom from '../AddRoom/AddRoom'
-import WaitingRoom from '../WaitingRoom/WaitingRoom'
-
-import './Home.css'
+import AddRoom from "../AddRoom/AddRoom";
 
 const Home = ({ userName }) => {
-  const [showAddRoom, setShowAddRoom] = useState(false)
-  const [showWaitingRoom, setShowWaitingRoom] = useState(false)
+  const [showAddRoom, setShowAddRoom] = useState(false);
 
   const [rooms, setRooms] = useState([
     {
       id: 1,
-      name: "Bar's Room",
+      roomName: "Bar's Room",
       numOfMembers: 2,
     },
     {
       id: 2,
-      name: "Amnon's Room",
+      roomName: "Amnon's Room",
       numOfMembers: 1,
     },
     {
       id: 3,
-      name: "The Drawers",
+      roomName: "The Drawers",
       numOfMembers: 0,
     },
   ]);
 
-  const toggle = (id) => {
+  //Handler when room clicked
+  const enterRoom = (id) => {
     console.log(`Room id : ${id}`);
   };
 
-  //Add Room
-  const addRoom=(room)=>{
-    const id= Math.random(Math.random() * 10000) + 1
-    const newRoom= {id,...room}
-    setRooms([...rooms,newRoom])
-    setShowAddRoom(false)
-    setShowWaitingRoom(true)
+  //Create Room
+  const createRoom = (room) => {
+    const id = Math.random(Math.random() * 10000) + 1;
+    const newRoom = { id, ...room };
+    setRooms([...rooms, newRoom]);
+  };
+
+  //Switch between join rooms screen to create room screen
+  const switchScreens = () => {
+    setShowAddRoom(!showAddRoom)
   }
 
   return (
     <div>
-      <Header userName={userName}/>
-      {rooms.length > 0 && !showAddRoom && !showWaitingRoom &&
-        <Rooms rooms={rooms} onToggle={toggle} />}
-      {showAddRoom && !showWaitingRoom && <div className="add-room-container"><AddRoom onAdd={addRoom} /> </div> }
-      {!showWaitingRoom &&
-      <Button
-        sx={{ width: 140, height: 28, mt: 2 }}
-        variant="contained"
-        color={showAddRoom ? 'error' : 'secondary'}
-        onClick={()=> setShowAddRoom(!showAddRoom)}>
-          {showAddRoom ? 'Cancel' : 'Create Room'}
-      </Button>}
-    
-      {showWaitingRoom && <WaitingRoom/>}
+      <Header userName={userName} />
+      {rooms.length > 0 && !showAddRoom && 
+        
+          <Rooms rooms={rooms} enterRoom={enterRoom} switchScreens={switchScreens} />
+      }
+
+      {showAddRoom &&
+          <AddRoom createRoom={createRoom} switchScreens={switchScreens} />
+      }
     </div>
   );
 };

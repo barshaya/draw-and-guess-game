@@ -1,16 +1,14 @@
 header {
-  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: baseline;
-  margin-left:0.3rem;
 }
 
 .username {
   margin-bottom: 1rem;;
   border: 1px solid purple;
   padding: 0.2rem;
+  margin:4rem;
 }
 
 .h1-draw {

@@ -10,14 +10,16 @@ function App() {
   const [userName, setUserName] = useState("");
   
   const onAddName = (name) => {
+    if (!name) {
+      alert("please add name");
+      return;
+    }
     setUserName(name);
   };
 
   return (
     <div className="App">
-      {/* {userName === "" ? <Login onAddName={onAddName}/> : <Home userName={userName}/>}  */}
-      <Canvas/>
-      {/* <Guess canvasHeight={300} canvasWidth={385}/> */}
+      {userName === "" ? <Login onAddName={onAddName}/> : <Home userName={userName}/>} 
     </div>
   );
 }
