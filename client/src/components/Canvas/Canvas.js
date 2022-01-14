@@ -3,14 +3,13 @@ import CanvasDraw from "react-canvas-draw";
 import React, { useState, useRef } from "react";
 
 import "./Canvas.css";
-import Header from "../Header/Header";
 
-const Canvas = () => {
+const Canvas = ({onSendClick}) => {
   const [color, setColor] = useState("#000");
   const [brushRadius, setBrushRadius] = useState(2);
 
   const canvasRef = useRef(null);
-  let canvasObject;
+  let canvasObject = canvasRef.current;
 
   const changeColor = (color) => {
     setColor(color);
@@ -35,21 +34,22 @@ const Canvas = () => {
   };
 
   let string;
-  const sendImg = () => {
+  const sendImg = (e) => {
+    e.preventDefault();
     canvasObject = canvasRef.current;
-    string = canvasObject.getSaveData();
-    console.log(string);
+    string= canvasObject.getSaveData();
+    onSendClick(canvasObject.getSaveData());
   };
-  const getImg = () => {
-    canvasObject = canvasRef.current;
-    canvasObject.loadSaveData(string);
-  };
+
+  // const getImg = () => {
+  //   canvasObject = canvasRef.current;
+  //   canvasObject.loadSaveData(string);
+  // };
 
   const CanvasHeight = window.screen.height - 165;
 
   return (
     <div className="canvas-container">
-      <Header/>
       <div className="canvas-tools">
         <div className="canvas-tool-item">
           <label>enter color</label>
@@ -85,9 +85,9 @@ const Canvas = () => {
         <div className="canvas-tool-item" onClick={sendImg}>
           send
         </div>
-        <div className="canvas-tool-item" onClick={getImg}>
+        {/* <div className="canvas-tool-item" onClick={getImg}>
           get
-        </div>
+        </div> */}
       </div>
       <CanvasDraw
         brushColor={color}

@@ -16,6 +16,6 @@ const Room = ({ room, enterRoom }) => {
 
 Room.propTypes = {
   room: PropTypes.object.isRequired,
-  onToggle: PropTypes.func.isRequired,
+  enterRoom: PropTypes.func.isRequired,
 };
 export default Room;

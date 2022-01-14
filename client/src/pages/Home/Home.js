@@ -1,11 +1,13 @@
-import React from "react";
 import { useState } from "react";
 import Rooms from "../../components/Rooms/Rooms";
 import Header from "../../components/Header/Header";
 import AddRoom from "../AddRoom/AddRoom";
+import GameScreen from "../GameScreen/GameScreen";
 
 const Home = ({ userName }) => {
   const [showAddRoom, setShowAddRoom] = useState(false);
+  const [startGame, setStartGame] = useState(false);
+
 
   const [rooms, setRooms] = useState([
     {
@@ -28,6 +30,8 @@ const Home = ({ userName }) => {
   //Handler when room clicked
   const enterRoom = (id) => {
     console.log(`Room id : ${id}`);
+    setStartGame(true)
+    setShowAddRoom(false)
   };
 
   //Create Room
@@ -45,9 +49,12 @@ const Home = ({ userName }) => {
   return (
     <div>
       <Header userName={userName} />
-      {rooms.length > 0 && !showAddRoom && 
+      {rooms.length > 0 && !showAddRoom && !startGame &&
         
           <Rooms rooms={rooms} enterRoom={enterRoom} switchScreens={switchScreens} />
+      }
+      {!showAddRoom && startGame &&
+          <GameScreen host={false}/>
       }
 
       {showAddRoom &&
