@@ -2,9 +2,13 @@ import CanvasDraw from "react-canvas-draw";
 
 import React, { useState, useRef } from "react";
 
+import Loading from "@mui/material/CircularProgress";
+
 import "./Canvas.css";
 
-const Canvas = ({onSendClick}) => {
+const Canvas = ({onSendClick,waiting}) => {
+
+  console.log(waiting)
   const [color, setColor] = useState("#000");
   const [brushRadius, setBrushRadius] = useState(2);
 
@@ -35,7 +39,6 @@ const Canvas = ({onSendClick}) => {
 
   let string;
   const sendImg = (e) => {
-    e.preventDefault();
     canvasObject = canvasRef.current;
     string= canvasObject.getSaveData();
     onSendClick(canvasObject.getSaveData());
@@ -50,7 +53,10 @@ const Canvas = ({onSendClick}) => {
 
   return (
     <div className="canvas-container">
-      <div className="canvas-tools">
+   {!waiting &&
+     <>
+   
+   <div className="canvas-tools">
         <div className="canvas-tool-item">
           <label>enter color</label>
           <input type="text" id="brushColor"></input>
@@ -98,7 +104,10 @@ const Canvas = ({onSendClick}) => {
         canvasHeight={CanvasHeight}
         ref={canvasRef}
       />
+      </>}
+     { waiting&& <Loading/> }
     </div>
+
   );
 };
 
