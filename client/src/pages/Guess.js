@@ -2,15 +2,15 @@ import CanvasDraw from "react-canvas-draw";
 
 import Loading from "@mui/material/CircularProgress";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, {useRef, useEffect } from "react";
 
 const Guess = ({ waiting ,drawingVideo,success}) => {
   console.log("guess");
 
   // const [isWaiting, setIsWaiting] = useState(waiting)
 
-  const canvasRef = useRef(null);
-  let canvasObject;
+  var canvasRef = useRef(null);
+  var canvasObject=canvasRef.current;
 
   const CanvasHeight = window.screen.height - 165;
 
@@ -23,11 +23,12 @@ const Guess = ({ waiting ,drawingVideo,success}) => {
   // }
 
   useEffect(() => {
-    if (drawingVideo) {
-      canvasObject = canvasRef.current;
+    canvasObject = canvasRef.current;
+    if(canvasObject && drawingVideo)
+    {
       canvasObject.loadSaveData(drawingVideo);
     }
-  }, [drawingVideo]);
+  }, [waiting]);
 
   return (
     <>

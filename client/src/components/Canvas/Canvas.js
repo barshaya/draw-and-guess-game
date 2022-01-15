@@ -8,12 +8,12 @@ import "./Canvas.css";
 
 const Canvas = ({onSendClick,waiting}) => {
 
-  console.log(waiting)
+  console.log(waiting);
   const [color, setColor] = useState("#000");
   const [brushRadius, setBrushRadius] = useState(2);
-
-  const canvasRef = useRef(null);
-  let canvasObject = canvasRef.current;
+  var canvasRef = useRef(null);
+  var canvasObject = canvasRef.current;
+  console.log(canvasObject)
 
   const changeColor = (color) => {
     setColor(color);
@@ -37,17 +37,12 @@ const Canvas = ({onSendClick,waiting}) => {
     canvasObject.undo();
   };
 
-  let string;
-  const sendImg = (e) => {
-    canvasObject = canvasRef.current;
-    string= canvasObject.getSaveData();
-    onSendClick(canvasObject.getSaveData());
+  const sendImg = () => {
+    canvasObject=canvasRef.current;
+    var string =canvasObject.getSaveData();
+    onSendClick(string);
   };
 
-  const getImg = () => {
-    canvasObject = canvasRef.current;
-    canvasObject.loadSaveData(string);
-  };
 
   const CanvasHeight = window.screen.height - 165;
 
@@ -91,9 +86,7 @@ const Canvas = ({onSendClick,waiting}) => {
         <div className="canvas-tool-item" onClick={sendImg}>
           send
         </div>
-        <div className="canvas-tool-item" onClick={getImg}>
-          get
-        </div>
+       
       </div>
       <CanvasDraw
         brushColor={color}

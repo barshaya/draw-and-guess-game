@@ -2,8 +2,6 @@ import Loading from "@mui/material/CircularProgress";
 
 import { useState } from "react";
 
-import GameScreen from "../GameScreen/GameScreen";
-
 const WaitingRoom = () => {
   const [gameStart, setGameStart] = useState(true);
 

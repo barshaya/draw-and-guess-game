@@ -9,10 +9,11 @@ import Guess from "../Guess";
 import { socketService } from "../../services/socketService";
 
 const GameScreen = () => {
+
+  const [drawer, setDrawer] = useState(false);
   const [waitForDraw, setWaitForDraw] = useState(true);
   const [waitForGuess, setWaitForGuess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [drawer, setDrawer] = useState(false);
   const [drawingVideo, setDrawingVideo] = useState(null);
 
   useEffect(() => {
@@ -20,44 +21,36 @@ const GameScreen = () => {
   }, [waitForDraw, waitForGuess, isLoading, drawer]);
 
   useEffect(() => {
-    socketService.on("startGame", (players) => {
-      console.log("startGame");
+    socketService.on("startGame", () => {
+      console.log('startgame')
       setIsLoading(false);
+    });
+
+    socketService.on("setDrawing", () => {
+      console.log("set drawing");
       setWaitForDraw(false);
-      //   if (players[0].isDrawing) {
-      //     setDrawer(true);
-      //     setWaitForDraw(false);
-      //     setWaitForGuess(false)
-      //   }
+      setWaitForGuess(false);
+      setDrawer(true);
     });
-
-    socketService.on("setDrawing", (isDraw) => {
-      console.log("set drawing", { isDraw });
-      setDrawer(isDraw);
+    socketService.on("getDrawing", (drawingVideo) => {
+      console.log("getDrawing", { drawer });
+      setDrawingVideo(drawingVideo);
+      console.log("getdrawing",typeof drawingVideo)
+      setDrawer(false)
+      setWaitForGuess(false);
+      setWaitForDraw(false);
+      setIsLoading(false);
     });
-  }, []);
-
-  useEffect(() => {
-    if (!drawer) {
-      socketService.on("getDrawing", (drawingVideo) => {
-        console.log("getDrawing", { drawer });
-        setDrawingVideo(drawingVideo);
-        //    setDrawer(true)
-        setWaitForGuess(false);
-        setWaitForDraw(false);
-        setIsLoading(false);
-      });
-    }
   }, [drawer]);
 
   // const [drawingVideo, setDrawingVideo] = useState(null);
 
   //function that when the drawer clicking on send they switching
   const sendDrawing = (drawingVideo) => {
+    //player1
     console.log("sent drawinggg");
-    // setDrawer(!drawer);
+    console.log(drawingVideo)
     setWaitForGuess(true);
-
     socketService.emit("sentDrawing", drawingVideo);
     //send to guess the drawing video
   };
@@ -93,7 +86,12 @@ const GameScreen = () => {
           success={success}
         />
       )}
-      {isLoading && <Loading />}
+      {isLoading &&
+      <>
+       <h3>waiting for a player to join</h3>
+       <Loading />
+       </>
+       }
     </>
   );
 };
