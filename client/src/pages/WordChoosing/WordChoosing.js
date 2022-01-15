@@ -7,27 +7,31 @@ var randomWords = require("random-words");
 const WordChoosing = () => {
   return (
     <div className="words-container">
+      <span>Easy</span>
       <Button
-        sx={{ width: 180, height: 25, mt: 3 }}
+        sx={{ width: 180, height: 25 , mt: 1 }}
         variant="contained"
         color="primary"
       >
-        Easy : {randomWords({ exactly: 1, maxLength: 3 })[0]}
+        {randomWords({ exactly: 1, minLength: 2, maxLength: 2})[0]}
       </Button>
+      <span>Medium</span>
       <Button
         sx={{ width: 180, height: 25, mt: 1 }}
         variant="contained"
         color="warning"
       >
-        Medium : {randomWords({ exactly: 1, maxLength: 4 })[0]}
+        {randomWords({ exactly: 1, minLength: 3, maxLength: 4 })[0]}
       </Button>
+      <span>Hard</span>
       <Button
         sx={{ width: 180, height: 25, mt: 1 }}
         variant="contained"
         color="error"
       >
-        Hard : {randomWords({ exactly: 1, maxLength: 5, mt: 1 })[0]}
+       {randomWords({ exactly: 1, minLength: 5})[0]}
       </Button>
+      {/* {console.log(document.getElementsByTagName('Button').textContent)} */}
     </div>
   );
 };

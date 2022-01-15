@@ -7,7 +7,7 @@ import GameScreen from "../GameScreen/GameScreen";
 import "./WaitingRoom.css"
 
 const WaitingRoom = () => {
-  const [gameStart, setGameStart] = useState(true);
+  const [gameStart, setGameStart] = useState(false);
 
   //function that check if the second player connect to the room (request to the server)
   //change gamestart state

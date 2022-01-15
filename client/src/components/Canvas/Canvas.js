@@ -41,10 +41,10 @@ const Canvas = ({onSendClick}) => {
     onSendClick(canvasObject.getSaveData());
   };
 
-  // const getImg = () => {
-  //   canvasObject = canvasRef.current;
-  //   canvasObject.loadSaveData(string);
-  // };
+  const getImg = () => {
+    canvasObject = canvasRef.current;
+    canvasObject.loadSaveData(string);
+  };
 
   const CanvasHeight = window.screen.height - 165;
 
@@ -85,9 +85,9 @@ const Canvas = ({onSendClick}) => {
         <div className="canvas-tool-item" onClick={sendImg}>
           send
         </div>
-        {/* <div className="canvas-tool-item" onClick={getImg}>
+        <div className="canvas-tool-item" onClick={getImg}>
           get
-        </div> */}
+        </div>
       </div>
       <CanvasDraw
         brushColor={color}
