@@ -4,7 +4,7 @@ import "./WordChoosing.css";
 
 var randomWords = require("random-words");
 
-const WordChoosing = () => {
+const WordChoosing = ({onClick}) => {
   return (
     <div className="words-container">
       <span>Easy</span>
@@ -12,6 +12,8 @@ const WordChoosing = () => {
         sx={{ width: 180, height: 25 , mt: 1 }}
         variant="contained"
         color="primary"
+        id='easy'
+        onClick={()=>onClick(document.getElementById('easy').textContent,1)}
       >
         {randomWords({ exactly: 1, minLength: 2, maxLength: 2})[0]}
       </Button>
@@ -20,6 +22,8 @@ const WordChoosing = () => {
         sx={{ width: 180, height: 25, mt: 1 }}
         variant="contained"
         color="warning"
+        id='medium'
+        onClick={()=>onClick(document.getElementById('medium').textContent,3)}
       >
         {randomWords({ exactly: 1, minLength: 3, maxLength: 4 })[0]}
       </Button>
@@ -28,10 +32,11 @@ const WordChoosing = () => {
         sx={{ width: 180, height: 25, mt: 1 }}
         variant="contained"
         color="error"
+        id='hard'
+        onClick={()=>onClick(document.getElementById('hard').textContent,5)}
       >
        {randomWords({ exactly: 1, minLength: 5})[0]}
       </Button>
-      {/* {console.log(document.getElementsByTagName('Button').textContent)} */}
     </div>
   );
 };
