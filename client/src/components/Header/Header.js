@@ -1,7 +1,6 @@
-import PropTypes from "prop-types";
 import "./Header.css";
 
-const Header = ({ userName }) => {
+const Header = () => {
   return (
     <header>
       <h1>
@@ -10,10 +9,6 @@ const Header = ({ userName }) => {
       </h1>
     </header>
   );
-};
-
-Header.prototype = {
-  name: PropTypes.string.isRequired,
 };
 
 export default Header;
