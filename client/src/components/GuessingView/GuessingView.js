@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import PropTypes from "prop-types";
 
@@ -9,10 +9,12 @@ import WaitingRoom from "../WaitingRoom/WaitingRoom";
 import "./GuessingView.css";
 
 const GuessingView = ({ waiting, drawingVideo, success }) => {
+
+  const [width,setWidth]= useState();
+  const [height,setHeight]= useState();
+
   var canvasRef = useRef(null);
   var canvasObject = canvasRef.current;
-
-  const CanvasHeight = window.screen.height - 200;
 
   useEffect(() => {
     canvasObject = canvasRef.current;
@@ -25,8 +27,8 @@ const GuessingView = ({ waiting, drawingVideo, success }) => {
         <div className="guessing-container">
           <h3>Guessing</h3>
           <CanvasDraw
-            canvasWidth={window.screen.width}
-            canvasHeight={CanvasHeight}
+            canvasWidth='100vh'
+            canvasHeight='100vh'
             ref={canvasRef}
             hideGrid={true}
             disabled={true}

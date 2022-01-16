@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Button from "@mui/material/Button";
 
 import "./WordChoosing.css";
@@ -5,6 +7,16 @@ import "./WordChoosing.css";
 var randomWords = require("random-words");
 
 const WordChoosing = ({onClick}) => {
+
+const [words,setWords]=useState([])
+
+useEffect(()=>{
+const easy= randomWords({ exactly: 1, minLength: 2, maxLength: 3})[0]
+const medium= randomWords({ exactly: 1, minLength: 4, maxLength: 5})[0]
+const hard= randomWords({ exactly: 1, minLength: 2, maxLength: 2})[0]
+setWords([easy,medium,hard])
+},[])
+
   return (
     <div className="words-container">
       <span>Easy</span>
@@ -13,9 +25,9 @@ const WordChoosing = ({onClick}) => {
         variant="contained"
         color="primary"
         id='easy'
-        onClick={()=>onClick(document.getElementById('easy').textContent,1)}
+        onClick={()=>onClick(words[0],1)}
       >
-        {randomWords({ exactly: 1, minLength: 2, maxLength: 2})[0]}
+      {words[0]}
       </Button>
       <span>Medium</span>
       <Button
@@ -23,9 +35,9 @@ const WordChoosing = ({onClick}) => {
         variant="contained"
         color="warning"
         id='medium'
-        onClick={()=>onClick(document.getElementById('medium').textContent,3)}
+        onClick={()=>onClick(words[1],3)}
       >
-        {randomWords({ exactly: 1, minLength: 3, maxLength: 4 })[0]}
+        {words[1]}
       </Button>
       <span>Hard</span>
       <Button
@@ -33,9 +45,9 @@ const WordChoosing = ({onClick}) => {
         variant="contained"
         color="error"
         id='hard'
-        onClick={()=>onClick(document.getElementById('hard').textContent,5)}
+        onClick={()=>onClick(words[2],5)}
       >
-       {randomWords({ exactly: 1, minLength: 5})[0]}
+       {words[2]}
       </Button>
     </div>
   );

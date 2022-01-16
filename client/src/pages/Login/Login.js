@@ -15,7 +15,7 @@ const Login = () => {
     const name=userName.current.value
     if (name) {
       const users=JSON.parse(localStorage.getItem('users'))||[]
-      if(users.length>0){
+      if(users.length>=0){
         users.push({name,isDrawing:false})
       }else{
         users.push({name,isDrawing:true})
