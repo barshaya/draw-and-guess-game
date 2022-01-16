@@ -41,6 +41,10 @@ io.on('connection', socket => {
       socket.broadcast.emit('getDrawing',drawingVideo)
     })
 
+    socket.on('sentWordChoosing',( {word,points})=>{
+      socket.broadcast.emit('getWordChoosing',( {word,points}))
+    })
+
     socket.on('success', ()=>{
       socket.broadcast.emit('changeWaitForDraw');
     })
