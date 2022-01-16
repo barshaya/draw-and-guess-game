@@ -49,8 +49,8 @@ io.on('connection', socket => {
     socket.on("disconnect", () => {
       //broadcast user disconnect -> other player 
       console.log('client is disconnecting ',socket.id);
-      socket.broadcast.emit('clientDisconnect');
       players=[];
+      socket.broadcast.emit('clientDisconnect');
     });
   })
 })
