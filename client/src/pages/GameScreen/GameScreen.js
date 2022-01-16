@@ -68,7 +68,7 @@ const GameScreen = () => {
     console.log('check')
     console.log(guessingWord);
     console.log(word)
-    if (guessingWord === word) {
+    if (guessingWord.toLowerCase() === word) {
       setDrawer(!drawer);
       setWaitForDraw(!waitForDraw);
       setWaitForGuess(false);
