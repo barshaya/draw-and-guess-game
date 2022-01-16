@@ -9,9 +9,12 @@ import WordChoosing from "../WordChoosing/WordChoosing";
 import "./DrawingView.css";
 
 const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
-  const [height, setHeight] = useState(400);
-  const [width, setWidth] = useState(400);
-
+  window.addEventListener("resize", () => {
+    setHeight(window.screen.height - 310);
+    setWidth(window.screen.width);
+  });
+  const [height, setHeight] = useState(window.screen.height - 310);
+  const [width, setWidth] = useState(window.screen.width);
 
   const [wordChoosing, setWordChoosing] = useState(null);
   const [color, setColor] = useState("#000");
@@ -40,6 +43,7 @@ const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
   };
 
   const sendImg = () => {
+    console.log("send image", canvasRef.current.getSaveData());
     onSendClick(canvasRef.current.getSaveData());
   };
 

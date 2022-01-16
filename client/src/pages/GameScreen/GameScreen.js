@@ -50,6 +50,7 @@ const GameScreen = () => {
     });
 
     socketService.on("getDrawing", (drawingVideo) => {
+      console.log('in',drawingVideo)
       setDrawingVideo(drawingVideo);
       setDrawer(false);
       setWaitForGuess(false);
@@ -57,19 +58,19 @@ const GameScreen = () => {
       setIsLoading(false);
     });
 
-    
+    socketService.on('clientDisconnect',  ()=>{
+      console.log("other player disconnect");
+      alert('other player disconnected');
+      navigate('/')
+    });
   }, []);
   
-  socketService.on('clientDisconnect',  ()=>{
-    console.log("other player disconnect");
-    alert('other player disconnected');
-    navigate('/')
-  });
 
   
   //function that when the drawer clicking on send they switching roles
   const sendDrawing = (drawingVideo) => {
     //player1
+    console.log('send drawing')
     setWaitForGuess(true);
     //send to guess the drawing video
     socketService.emit("sentDrawing", drawingVideo);
@@ -110,7 +111,7 @@ const GameScreen = () => {
   //user2 turn to draw
 
   return (
-    <>
+    <div className="game-screen-container">
       {!isLoading&&
           <div className="score">Score : <div className="score-points">{points}</div></div>
       }
@@ -144,7 +145,7 @@ const GameScreen = () => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

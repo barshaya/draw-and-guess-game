@@ -13,7 +13,7 @@ const [words,setWords]=useState([])
 useEffect(()=>{
 const easy= randomWords({ exactly: 1, minLength: 2, maxLength: 3})[0]
 const medium= randomWords({ exactly: 1, minLength: 4, maxLength: 5})[0]
-const hard= randomWords({ exactly: 1, minLength: 2, maxLength: 2})[0]
+const hard= randomWords({ exactly: 1, minLength: 6, maxLength: 7})[0]
 setWords([easy,medium,hard])
 },[])
 
