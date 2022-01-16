@@ -5,19 +5,15 @@ body {
   padding: 0;
 }
 
-
 .App {
-  background: radial-gradient(
-    circle,
-    rgba(249, 253, 45, 0.7319970224417892) 0%,
-    rgba(200, 104, 244, 1) 100%
-  );
+  background: radial-gradient( circle, rgba(249, 253, 45, 0.7319970224417892) 0%, rgba(200, 104, 244, 1) 100% );
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: 100vh;
   overflow: hidden;
   display: flex;
-  justify-content: center;
   text-align: center;
+  align-items: center;
+  flex-direction: column;
 }
