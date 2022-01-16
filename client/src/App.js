@@ -4,13 +4,14 @@ import Login from "./pages/Login/Login";
 
 import "./App.css";
 import GameScreen from "./pages/GameScreen/GameScreen";
+import Header from "./components/Header/Header"
 
 function App() {
 
   return (
     <div className="App">
-      {/* header */}
-      <BrowserRouter>
+        <Header/>
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/game-screen" element={<GameScreen />} />
@@ -20,3 +21,4 @@ function App() {
   );
 }
 export default App;
+

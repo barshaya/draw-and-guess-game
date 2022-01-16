@@ -8,7 +8,6 @@ const Header = ({ userName }) => {
         <span className="h1-draw">Draw&</span>
         <span className="h1-guess">Guess</span>
       </h1>
-      {userName && <div className="username">{userName}</div>}
     </header>
   );
 };
@@ -18,3 +17,4 @@ Header.prototype = {
 };
 
 export default Header;
+
