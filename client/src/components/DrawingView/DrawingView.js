@@ -9,15 +9,21 @@ import WordChoosing from "../WordChoosing/WordChoosing";
 import "./DrawingView.css";
 
 const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
+  window.addEventListener("resize", () => {
+    setHeight(window.screen.height - 310);
+    setWidth(window.screen.width);
+  });
+  const [height, setHeight] = useState(window.screen.height - 310);
+  const [width, setWidth] = useState(window.screen.width);
+
   const [wordChoosing, setWordChoosing] = useState(null);
-  const [color, setColor] = useState('black');
+  const [color, setColor] = useState("#000");
   const [brushRadius, setBrushRadius] = useState(2);
 
   const canvasRef = useRef(null);
-  const CanvasHeight = window.screen.height - 165;
 
   const changeColor = (brushColor) => {
-    setColor(brushColor)
+    setColor(brushColor);
   };
 
   const changeRadius = (radius) => {
@@ -25,7 +31,7 @@ const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
   };
 
   const remove = () => {
-    setColor('white');
+    setColor("#ffff");
   };
 
   const eraseAll = () => {
@@ -37,6 +43,7 @@ const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
   };
 
   const sendImg = () => {
+    console.log("send image", canvasRef.current.getSaveData());
     onSendClick(canvasRef.current.getSaveData());
   };
 
@@ -51,8 +58,8 @@ const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
       {!waiting && wordChoosing && (
         <>
           <h3>Drawing</h3>
-          <div class="word-container">
-            You are drawing :<div class="word"> {wordChoosing}</div>
+          <div className="word-container">
+            You are drawing :<div className="word"> {wordChoosing}</div>
           </div>
           <div className="canvas-tools">
             <div className="canvas-tool-item">
@@ -105,8 +112,8 @@ const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
             brushRadius={brushRadius}
             lazyRadius={1}
             hideGrid={true}
-            canvasWidth={window.screen.width}
-            canvasHeight={CanvasHeight}
+            canvasWidth={width}
+            canvasHeight={height}
             ref={canvasRef}
           />
         </>

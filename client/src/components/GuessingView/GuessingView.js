@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import PropTypes from "prop-types";
 
@@ -9,13 +9,19 @@ import WaitingRoom from "../WaitingRoom/WaitingRoom";
 import "./GuessingView.css";
 
 const GuessingView = ({ waiting, drawingVideo, success }) => {
+  window.addEventListener("resize", () => {
+    setHeight(window.screen.height - 250);
+    setWidth(window.screen.width);
+  });
+  const [height, setHeight] = useState(window.screen.height - 250);
+  const [width, setWidth] = useState(window.screen.width);
+
   var canvasRef = useRef(null);
   var canvasObject = canvasRef.current;
 
-  const CanvasHeight = window.screen.height - 200;
-
   useEffect(() => {
     canvasObject = canvasRef.current;
+    console.log(canvasObject);
     if (canvasObject && drawingVideo) canvasObject.loadSaveData(drawingVideo);
   }, [waiting]);
 
@@ -25,14 +31,26 @@ const GuessingView = ({ waiting, drawingVideo, success }) => {
         <div className="guessing-container">
           <h3>Guessing</h3>
           <CanvasDraw
-            canvasWidth={window.screen.width}
-            canvasHeight={CanvasHeight}
+            canvasWidth={width}
+            canvasHeight={height}
             ref={canvasRef}
             hideGrid={true}
             disabled={true}
           />
-          <input className="guessing-container-input" type="text" id="guessingWord"></input>
-          <button className="guessing-container-btn"  onClick={()=>success(document.getElementById('guessingWord').value)}> Guess </button>
+          <input
+            className="guessing-container-input"
+            type="text"
+            id="guessingWord"
+          ></input>
+          <button
+            className="guessing-container-btn"
+            onClick={() =>
+              success(document.getElementById("guessingWord").value)
+            }
+          >
+            {" "}
+            Guess{" "}
+          </button>
         </div>
       )}
       {waiting && <WaitingRoom>Waiting for Drawing from player</WaitingRoom>}
