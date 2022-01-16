@@ -27,6 +27,8 @@ io.on('connection', socket => {
     }
     if(players.length===2){
       socket.emit('startGame')
+      //??
+      socket.broadcast.emit('startGame')
     }
     socket.on("disconnect", () => {
       socket.emit('cleanLocalStorage')
@@ -38,9 +40,11 @@ io.on('connection', socket => {
     socket.on('sentDrawing',(drawingVideo)=>{
       socket.broadcast.emit('getDrawing',drawingVideo)
     })
-  })
 
-  
+    socket.on('success', ()=>{
+      socket.broadcast.emit('changeWaitForDraw');
+    })
+  })
 })
 
 http.listen(4000, function() {
