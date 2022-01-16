@@ -30,24 +30,28 @@ io.on('connection', socket => {
       //??
       socket.broadcast.emit('startGame')
     }
-    socket.on("disconnect", () => {
-      socket.emit('cleanLocalStorage')
-      console.log(socket.id);
-      players=[];
-    });
-
+    
     //handle drawing
     socket.on('sentDrawing',(drawingVideo)=>{
       socket.broadcast.emit('getDrawing',drawingVideo)
     })
-
+    
     socket.on('sentWordChoosing',( {word,points})=>{
+      // players[0].points+=points
+      // io.sockets.emit('getWordChoosing',{word,points})
       socket.broadcast.emit('getWordChoosing',( {word,points}))
     })
-
+    
     socket.on('success', ()=>{
       socket.broadcast.emit('changeWaitForDraw');
     })
+    
+    socket.on("disconnect", () => {
+      //broadcast user disconnect -> other player 
+      console.log('client is disconnecting ',socket.id);
+      socket.broadcast.emit('clientDisconnect');
+      players=[];
+    });
   })
 })
 
