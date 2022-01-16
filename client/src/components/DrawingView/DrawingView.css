@@ -1,5 +1,18 @@
-.canvas-container {
+.drawing-view-container {
   height: 100vh;
+}
+.word-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid yellow;
+  background-color:white;
+}
+
+.word{
+  font-size:1.3rem;
+  font-weight: bold; 
+  margin-left:0.3rem;
 }
 
 .canvas-tools {
@@ -8,10 +21,13 @@
 }
 
 .canvas-tool-item {
-  border: 2px solid red;
-  font-size: 0.7rem;
+  border: 2px solid yellow;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
 }
 
 .canvas-tool-item input,.canvas-tool-item button{
@@ -20,4 +36,27 @@
 }
 
 
+.btn{
+  height: 15px;
+  width: 8px;
+  background-color: #bbb;
+  border-radius: 70%;
+  border:none;
+  margin:0.1rem;
+}
 
+.btn-red{
+  background-color:red;
+}
+
+.btn-yellow{
+  background-color:yellow;
+}
+
+.btn-blue{
+  background-color:blue;
+}
+
+.btn-black{
+  background-color:black;
+}

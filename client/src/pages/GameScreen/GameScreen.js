@@ -21,19 +21,16 @@ const GameScreen = () => {
 
   useEffect(() => {
     socketService.on("startGame", () => {
-      console.log("startgame");
       setIsLoading(false);
     });
 
     socketService.on("setDrawing", () => {
-      console.log("set drawing");
       setWaitForDraw(false);
       setWaitForGuess(false);
       setDrawer(true);
     });
     
     socketService.on("changeWaitForDraw", () => {
-      console.log("hello");
       setWaitForDraw(true);
       setWaitForGuess(false);
       setDrawer(false);
@@ -45,9 +42,7 @@ const GameScreen = () => {
   }, [drawer]);
 
   socketService.on("getDrawing", (drawingVideo) => {
-    console.log("getDrawing", { drawer });
     setDrawingVideo(drawingVideo);
-    console.log("getdrawing", typeof drawingVideo);
     setDrawer(false);
     setWaitForGuess(false);
     setWaitForDraw(false);
@@ -57,17 +52,12 @@ const GameScreen = () => {
   //function that when the drawer clicking on send they switching roles
   const sendDrawing = (drawingVideo) => {
     //player1
-    console.log("sent drawinggg");
-    console.log(drawingVideo);
     setWaitForGuess(true);
     //send to guess the drawing video
     socketService.emit("sentDrawing", drawingVideo);
   };
   
   const success = (guessingWord) => {
-    console.log('check')
-    console.log(guessingWord);
-    console.log(word)
     if (guessingWord.toLowerCase() === word) {
       setDrawer(!drawer);
       setWaitForDraw(!waitForDraw);
@@ -80,7 +70,6 @@ const GameScreen = () => {
   };
 
   const chooseWord = (word, points) => {
-    console.log('set',word)
     //send word to server
     socketService.emit("sentWordChoosing", {word,points});
   };

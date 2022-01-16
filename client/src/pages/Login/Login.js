@@ -24,7 +24,6 @@ const Login = () => {
       socketService.emit("userLogged", users[users.length-1]);
       navigate("/game-screen");
     } else {
-      //TODO: show error
       alert("Please enter your name");
     }
   };

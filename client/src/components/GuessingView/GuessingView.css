@@ -1,0 +1,27 @@
+.guessing-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.guessing-container-btn{
+    border-radius: 1rem;
+    width: 4rem;
+    background-color: purple;
+    color:white;
+    border:none;
+    padding:0.5rem;
+}
+
+
+button:active{
+    transform: translateY(0.1rem);
+}
+
+
+.guessing-container-input{
+    border-radius: 1rem;
+    margin: 0.3rem;
+    border:none;
+}
