@@ -1,26 +1,23 @@
 import React, { useState, useRef } from "react";
 
+import CanvasDraw from "react-canvas-draw";
 import PropTypes from "prop-types";
 
-import CanvasDraw from "react-canvas-draw";
-
 import WaitingRoom from "../WaitingRoom/WaitingRoom";
-
-import "./DrawingView.css";
 import WordChoosing from "../WordChoosing/WordChoosing";
 
-const DrawingView = ({ onSendClick, waiting ,chooseWord}) => {
+import "./DrawingView.css";
+
+const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
   const [wordChoosing, setWordChoosing] = useState(null);
-
-  console.log(waiting);
-  const [color, setColor] = useState("#000");
+  const [color, setColor] = useState('black');
   const [brushRadius, setBrushRadius] = useState(2);
-  var canvasRef = useRef(null);
-  var canvasObject = canvasRef.current;
-  console.log(canvasObject);
 
-  const changeColor = (color) => {
-    setColor(color);
+  const canvasRef = useRef(null);
+  const CanvasHeight = window.screen.height - 165;
+
+  const changeColor = (brushColor) => {
+    setColor(brushColor)
   };
 
   const changeRadius = (radius) => {
@@ -28,55 +25,56 @@ const DrawingView = ({ onSendClick, waiting ,chooseWord}) => {
   };
 
   const remove = () => {
-    setColor("#ffff");
+    setColor('white');
   };
 
   const eraseAll = () => {
-    canvasObject = canvasRef.current;
-    canvasObject.eraseAll();
+    canvasRef.current.eraseAll();
   };
 
   const undo = () => {
-    canvasObject = canvasRef.current;
-    canvasObject.undo();
+    canvasRef.current.undo();
   };
 
   const sendImg = () => {
-    canvasObject = canvasRef.current;
-    var string = canvasObject.getSaveData();
-    onSendClick(string);
+    onSendClick(canvasRef.current.getSaveData());
   };
 
-  const CanvasHeight = window.screen.height - 165;
-
-  const onChooseWord = (word,points) => {
-    console.log('drawing chose word', word)
+  const onChooseWord = (word, points) => {
     setWordChoosing(word);
-    chooseWord(word,points)
-  }
+    chooseWord(word, points);
+  };
 
   return (
-    <div className="canvas-container">
-      {!waiting && !wordChoosing &&
-        <WordChoosing onClick={onChooseWord}/>
-      }
+    <div className="drawing-view-container">
+      {!waiting && !wordChoosing && <WordChoosing onClick={onChooseWord} />}
       {!waiting && wordChoosing && (
         <>
           <h3>Drawing</h3>
-          <div>
-            <span>word : {wordChoosing}</span>
+          <div class="word-container">
+            You are drawing :<div class="word"> {wordChoosing}</div>
           </div>
           <div className="canvas-tools">
             <div className="canvas-tool-item">
-              <label>enter color</label>
-              <input type="text" id="brushColor"></input>
-              <button
-                onClick={() =>
-                  changeColor(document.getElementById("brushColor").value)
-                }
-              >
-                ok
-              </button>
+              <label>colors</label>
+              <div className="canvas-colors-tool">
+                <button
+                  className="btn btn-black"
+                  onClick={() => changeColor("black")}
+                ></button>
+                <button
+                  className="btn btn-red"
+                  onClick={() => changeColor("red")}
+                ></button>
+                <button
+                  className="btn btn-yellow"
+                  onClick={() => changeColor("yellow")}
+                ></button>
+                <button
+                  className="btn btn-blue"
+                  onClick={() => changeColor("blue")}
+                ></button>
+              </div>
             </div>
             <div className="canvas-tool-item">
               <label>enter radius</label>
@@ -118,9 +116,9 @@ const DrawingView = ({ onSendClick, waiting ,chooseWord}) => {
   );
 };
 
-DrawingView.propTypes= {
+DrawingView.propTypes = {
   onSendClick: PropTypes.func.isRequired,
-  waiting: PropTypes.bool.isRequired
-}
+  waiting: PropTypes.bool.isRequired,
+};
 
 export default DrawingView;

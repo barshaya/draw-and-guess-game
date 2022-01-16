@@ -6,13 +6,13 @@ import CanvasDraw from "react-canvas-draw";
 
 import WaitingRoom from "../WaitingRoom/WaitingRoom";
 
-const GuessingView = ({ waiting, drawingVideo, success }) => {
-  console.log("guess");
+import "./GuessingView.css";
 
+const GuessingView = ({ waiting, drawingVideo, success }) => {
   var canvasRef = useRef(null);
   var canvasObject = canvasRef.current;
 
-  const CanvasHeight = window.screen.height - 165;
+  const CanvasHeight = window.screen.height - 200;
 
   useEffect(() => {
     canvasObject = canvasRef.current;
@@ -22,7 +22,7 @@ const GuessingView = ({ waiting, drawingVideo, success }) => {
   return (
     <>
       {!waiting && (
-        <div>
+        <div className="guessing-container">
           <h3>Guessing</h3>
           <CanvasDraw
             canvasWidth={window.screen.width}
@@ -31,8 +31,8 @@ const GuessingView = ({ waiting, drawingVideo, success }) => {
             hideGrid={true}
             disabled={true}
           />
-          <input type="text" id="guessingWord"></input>
-          <button onClick={()=>success(document.getElementById('guessingWord').value)}> submit </button>
+          <input className="guessing-container-input" type="text" id="guessingWord"></input>
+          <button className="guessing-container-btn"  onClick={()=>success(document.getElementById('guessingWord').value)}> Guess </button>
         </div>
       )}
       {waiting && <WaitingRoom>Waiting for Drawing from player</WaitingRoom>}
