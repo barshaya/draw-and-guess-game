@@ -26,7 +26,6 @@ io.on('connection', socket => {
       socket.emit('setDrawing')
     }
     if(players.length===2){
-      socket.broadcast.emit('startGame')
       socket.emit('startGame')
     }
     socket.on("disconnect", () => {
@@ -34,12 +33,13 @@ io.on('connection', socket => {
       console.log(socket.id);
       players=[];
     });
+
+    //handle drawing
+    socket.on('sentDrawing',(drawingVideo)=>{
+      socket.broadcast.emit('getDrawing',drawingVideo)
+    })
   })
 
-  //handle drawing
-  socket.on('sentDrawing',(drawingVideo)=>{
-    socket.broadcast.emit('getDrawing',drawingVideo)
-  })
   
 })
 
