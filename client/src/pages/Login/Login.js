@@ -11,7 +11,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-
   const login = () => {
     const name=userName.current.value
     if (name) {

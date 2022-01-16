@@ -19,13 +19,13 @@ const GameScreen = () => {
   useEffect(() => {
     console.log({ waitForDraw, waitForGuess, isLoading, drawer });
   }, [waitForDraw, waitForGuess, isLoading, drawer]);
-
+  
   useEffect(() => {
     socketService.on("startGame", () => {
       console.log('startgame')
       setIsLoading(false);
     });
-
+    
     socketService.on("setDrawing", () => {
       console.log("set drawing");
       setWaitForDraw(false);
@@ -42,9 +42,9 @@ const GameScreen = () => {
       setIsLoading(false);
     });
   }, [drawer]);
-
+  
   // const [drawingVideo, setDrawingVideo] = useState(null);
-
+  
   //function that when the drawer clicking on send they switching
   const sendDrawing = (drawingVideo) => {
     //player1
@@ -54,17 +54,19 @@ const GameScreen = () => {
     socketService.emit("sentDrawing", drawingVideo);
     //send to guess the drawing video
   };
-
+  
   const success = () => {
     console.log("success");
     setDrawer(!drawer);
     setWaitForDraw(!waitForDraw);
     setWaitForGuess(false);
   };
-
+  
+ 
+  
   //user1 wait for user2 to join
   //user 2 joined , wait for tthe draw
-
+  
   // use1r turn to draw
   // user2 waitng
 
