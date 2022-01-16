@@ -15,7 +15,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-let userName='';
 let players=[]
 
 io.on('connection', socket => {
@@ -30,15 +29,19 @@ io.on('connection', socket => {
       socket.broadcast.emit('startGame')
       socket.emit('startGame')
     }
-    // io.emit('message', { name, message })
+    socket.on("disconnect", () => {
+      socket.emit('cleanLocalStorage')
+      console.log(socket.id);
+      players=[];
+    });
   })
 
   //handle drawing
   socket.on('sentDrawing',(drawingVideo)=>{
     socket.broadcast.emit('getDrawing',drawingVideo)
   })
+  
 })
-
 
 http.listen(4000, function() {
   console.log('listening on port 4000')
