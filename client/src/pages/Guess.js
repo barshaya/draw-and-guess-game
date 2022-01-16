@@ -2,46 +2,53 @@ import CanvasDraw from "react-canvas-draw";
 
 import Loading from "@mui/material/CircularProgress";
 
-import React, { useState ,useRef } from "react";
+import React, {useRef, useEffect } from "react";
 
+const Guess = ({ waiting ,drawingVideo,success}) => {
+  console.log("guess");
 
-const Guess = ({ waiting, getDrawingVideo}) => {
-  console.log('guess')
+  // const [isWaiting, setIsWaiting] = useState(waiting)
 
-  const [isWaiting, setIsWaiting] = useState(!waiting)
-  
-  const canvasRef = useRef(null);
-  let canvasObject;
+  var canvasRef = useRef(null);
+  var canvasObject=canvasRef.current;
 
   const CanvasHeight = window.screen.height - 165;
 
-  const getDraw = () => {
+  // const getDraw = () => {
+  //   canvasObject = canvasRef.current;
+  //   if(dv != null){
+  //     canvasObject.loadSaveData(dv);
+  //     // setIsWaiting(!isWaiting)
+  //   }
+  // }
+
+  useEffect(() => {
     canvasObject = canvasRef.current;
-    let dv = getDrawingVideo();
-    if(dv != null){
-      canvasObject.loadSaveData(dv);
-      setIsWaiting(!isWaiting)
+    if(canvasObject && drawingVideo)
+    {
+      canvasObject.loadSaveData(drawingVideo);
     }
-  }
+  }, [waiting]);
 
   return (
     <>
-      {!isWaiting && (
+      {!waiting && (
         <div>
-          <button onClick={getDraw}>get</button>
+          {/* <button onClick={getDraw}>get</button> */}
           <CanvasDraw
             canvasWidth={window.screen.width}
             canvasHeight={CanvasHeight}
             ref={canvasRef}
           />
-
+          <button onClick={success}> success</button>
         </div>
       )}
-      {isWaiting && 
-      <div>
-        <h3>Waiting for Drawing </h3>
-        <Loading />
-      </div>}
+      {waiting && (
+        <div>
+          <h3>Waiting for Drawing from player </h3>
+          <Loading />
+        </div>
+      )}
     </>
   );
 };
