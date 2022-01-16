@@ -16,6 +16,7 @@ const GameScreen = () => {
   const [word, setWord] = useState(null);
 
   useEffect(() => {
+    
     console.log({ waitForDraw, waitForGuess, isLoading, drawer });
   }, [waitForDraw, waitForGuess, isLoading, drawer]);
 

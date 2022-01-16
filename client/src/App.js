@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import Login from "./pages/Login/Login";
@@ -7,6 +8,13 @@ import GameScreen from "./pages/GameScreen/GameScreen";
 import Header from "./components/Header/Header"
 
 function App() {
+
+
+  useEffect(() => {
+    return () => {
+      window.localStorage.clear();
+    }
+  }, [])
 
   return (
     <div className="App">
