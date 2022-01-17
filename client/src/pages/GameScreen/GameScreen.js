@@ -9,62 +9,72 @@ import { useNavigate } from "react-router-dom";
 import "./GameScreen.css";
 
 const GameScreen = () => {
+
+  console.log('game screen')
   const navigate = useNavigate()
 
   const [drawer, setDrawer] = useState(false);  
+  const [isLoading, setIsLoading] = useState(false);
   const [waitForDraw, setWaitForDraw] = useState(true);
   const [waitForGuess, setWaitForGuess] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [drawingVideo, setDrawingVideo] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
   const [points, setPoints] = useState(0);
   const [newPoints, setNewPoints] = useState();
-
-
-  //word choosed
-  const [word, setWord] = useState(null);
   useEffect(() => {
     console.log({ waitForDraw, waitForGuess, isLoading, drawer });
   }, [waitForDraw, waitForGuess, isLoading, drawer]);
-
+  
   useEffect(() => {
-    socketService.on("startGame", () => {
-      setIsLoading(false);
-    });
-
     socketService.on("setDrawing", () => {
+      console.log('set drawing')
       setWaitForDraw(false);
       setWaitForGuess(false);
       setDrawer(true);
+      setIsLoading(true);
     });
-
+    
+    socketService.on("startGame", () => {
+      console.log('listen to start game')
+      setIsLoading(false);
+    });
+    
     socketService.on("changeWaitForDraw", () => {
       setWaitForDraw(true);
       setWaitForGuess(false);
       setDrawer(false);
     });
-
+    
     socketService.on("getWordChoosing", ({ word, points }) => {
       setWord(word);
       setNewPoints(points);
     });
-
+    
     socketService.on("getDrawing", (drawingVideo) => {
-      console.log('in',drawingVideo)
       setDrawingVideo(drawingVideo);
       setDrawer(false);
       setWaitForGuess(false);
       setWaitForDraw(false);
       setIsLoading(false);
     });
-
-    socketService.on('clientDisconnect',  ()=>{
-      console.log("other player disconnect");
-      alert('other player disconnected');
-      navigate('/')
-    });
+    
   }, []);
+  socketService.on("winner", (winner)=>{
+    alert(`winner is ${winner}`);
+    localStorage.removeItem('users');
+    navigate('/')
+  })
   
+  socketService.on('clientDisconnect',  ()=>{
+    console.log("other player disconnect");
+    localStorage.removeItem('users');
+    navigate('/')
+  });
+  
+
+
+  //word choosed
+  const [word, setWord] = useState(null);
 
   
   //function that when the drawer clicking on send they switching roles
@@ -79,7 +89,6 @@ const GameScreen = () => {
   const success = (guessingWord) => {
     if (guessingWord.toLowerCase() === word) {
       setIsSuccess(true);
-
       setPoints(points + newPoints);
     } else {
       alert("try again");
@@ -91,44 +100,41 @@ const GameScreen = () => {
     setDrawer(!drawer);
     setWaitForDraw(!waitForDraw);
     setWaitForGuess(false);
-    socketService.emit("success");
+    socketService.emit("success",points);
   };
 
   const chooseWord = (word, points) => {
     //send word to server
     socketService.emit("sentWordChoosing", { word, points });
   };
-  //user1 wait for user2 to join
-  //user 2 joined , wait for tthe draw
-
-  // use1r turn to draw
-  // user2 waitng
-
-  //use1r wait for guess
-  //user2 guesing until succeed
-  //switch
-  //user1  waitng for the draw
-  //user2 turn to draw
-
+  
+  const endGame = () => {
+    socketService.emit("endGame");
+   
+  }
+  
   return (
     <div className="game-screen-container">
       {!isLoading&&
-          <div className="score">Score : <div className="score-points">{points}</div></div>
+          <div className="second-header">
+          <div className="score">Score : <div className="score-points">{points}</div> </div>
+          <button className="end-game" onClick={endGame}>end game</button>
+        </div>
       }
       {drawer && !isLoading && (
         <DrawingView
-          onSendClick={sendDrawing}
-          waiting={waitForGuess}
-          chooseWord={chooseWord}
+        onSendClick={sendDrawing}
+        waiting={waitForGuess}
+        chooseWord={chooseWord}
         />
-      )}
+        )}
       {!drawer && !isLoading && (
         <GuessingView
-          waiting={waitForDraw}
+        waiting={waitForDraw}
           drawingVideo={drawingVideo}
           success={success}
-        />
-      )}
+          />
+          )}
       {isLoading && <WaitingRoom>waiting for a player to join</WaitingRoom>}
    
       {isSuccess && (

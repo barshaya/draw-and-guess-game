@@ -7,6 +7,7 @@ import GameScreen from "./pages/GameScreen/GameScreen";
 import Header from "./components/Header/Header"
 
 function App() {
+  // localStorage.setItem('users')
 
   return (
     <div className="App">

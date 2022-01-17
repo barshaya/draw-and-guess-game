@@ -21,13 +21,15 @@
     border-radius: 2rem;
 }
 
-.success-close{
+.success-close, .end-game{
     background-color: red;
-    color:white;
-    font-size: 2rem;
+    color: white;
     padding: 0.1rem 0.3rem;
-    margin:0.4rem;
+    margin: 0.4rem;
     border: 1px solid white;
+    font-size: 1.5rem;
+    border-radius: 0.6rem;
+    border: none;
 }
 
 .success-close:hover {
@@ -43,4 +45,13 @@
 
 .score-points{
     margin-left:0.3rem;
+}
+
+
+
+.second-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    width: 100%;
 }

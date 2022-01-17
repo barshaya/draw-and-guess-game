@@ -12,13 +12,16 @@ const Login = () => {
   const navigate = useNavigate();
 
   const login = () => {
-    const name=userName.current.value
+    var name=userName.current.value
     if (name) {
       const users=JSON.parse(localStorage.getItem('users'))||[]
+      console.log(users)
+      if(users.length==2)
+        return;
       if(users.length>=0){
-        users.push({name,isDrawing:false})
-      }else{
         users.push({name,isDrawing:true})
+      }else{
+        users.push({name,isDrawing:false})
       }
       localStorage.setItem("users", JSON.stringify(users));
       socketService.emit("userLogged", users[users.length-1]);
