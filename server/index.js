@@ -23,14 +23,14 @@ io.on('connection', socket => {
   console.log('connected');
   socket.on('userLogged', (userName) => {
     players.push(userName)
-    console.log('user is connects',userName,{players})
+    console.log(userName,{players})
     if(players.length===1){
-      socket.emit('setDrawing')   
-      socket.emit('startGame')
+      socket.emit('setDrawing')
     }
     if(players.length===2){
       socket.emit('startGame')
-      console.log('emit start game') 
+      //??
+      socket.broadcast.emit('startGame')
     }
     
     //handle drawing
@@ -60,12 +60,12 @@ io.on('connection', socket => {
 
     socket.on('endGame', ()=>{
       if(score[0]==score[1])
-        socket.broadcast.emit('winner','both')
+        socket.emit('winner','both')
       if(score[0]>score[1])
-      socket.broadcast.emit('winner','player 1')
+        socket.emit('winner','player 1')
       if(score[0]<score[1])
-        socket.broadcast.emit('winner','player 2')
-      socket.emit('clientDisconnect');
+        socket.emit('winner','player 2')
+      socket.broadcast.emit('clientDisconnect');
     })
   })
 })
