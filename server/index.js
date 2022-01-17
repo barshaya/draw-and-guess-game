@@ -15,7 +15,9 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-let players=[]
+let players=[];
+let score=[0,0];
+let bool=true;
 
 io.on('connection', socket => {
   console.log('connected');
@@ -41,10 +43,13 @@ io.on('connection', socket => {
       // io.sockets.emit('getWordChoosing',{word,points})
       socket.broadcast.emit('getWordChoosing',( {word,points}))
     })
-    
-    socket.on('success', ()=>{
+   
+    socket.on('success', (points)=>{
+      score[Number(bool)]=points;
+      bool=!bool;
       socket.broadcast.emit('changeWaitForDraw');
     })
+    
     
     socket.on("disconnect", () => {
       //broadcast user disconnect -> other player 
@@ -52,6 +57,16 @@ io.on('connection', socket => {
       players=[];
       socket.broadcast.emit('clientDisconnect');
     });
+
+    socket.on('endGame', ()=>{
+      if(score[0]==score[1])
+        socket.emit('winner','both')
+      if(score[0]>score[1])
+        socket.emit('winner','player 1')
+      if(score[0]<score[1])
+        socket.emit('winner','player 2')
+      socket.broadcast.emit('clientDisconnect');
+    })
   })
 })
 
