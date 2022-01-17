@@ -1,9 +1,9 @@
 # DRAW&GUESS GAME
 
-Run Locally.
-Clone this project.
-In one terminal process run cd server; node index.js.
-In another terminal process run cd client; npm i; npm start.
+Run Locally. --
+Clone this project. --
+In one terminal process run cd server; node index.js.-- 
+In another terminal process run cd client; npm i; npm start. --
 
 # Create A Game
 log in with your username and wait for a Second Player. 
