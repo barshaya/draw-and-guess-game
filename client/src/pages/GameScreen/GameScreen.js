@@ -12,8 +12,8 @@ const GameScreen = () => {
   const navigate = useNavigate();
 
   const [drawer, setDrawer] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [waitForDraw, setWaitForDraw] = useState(false);
+  const [waitForDraw, setWaitForDraw] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [waitForGuess, setWaitForGuess] = useState(false);
   const [drawingVideo, setDrawingVideo] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -25,12 +25,10 @@ const GameScreen = () => {
       setWaitForDraw(false);
       setWaitForGuess(false);
       setDrawer(true);
-      setIsLoading(true);
     });
 
     socketService.on("startGame", () => {
       setIsLoading(false);
-      setWaitForDraw(true);
     });
 
     socketService.on("changeWaitForDraw", () => {
