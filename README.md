@@ -1,4 +1,4 @@
-# DRAW&GUESS GAME
+# Draw & Guess Game
 
 Run Locally.\
 Clone this project.\
@@ -12,11 +12,11 @@ When Second Player logged in the GAME START.\
 
 # Game Start
 # First Player start as the Drawer.\
-choose a word :\
+choose a word :
 \
 Hard Word   ---> 5 points.\
 Medium Word ---> 3 points.\
-Easy Word   ---> 1 point.\
+Easy Word   ---> 1 point.
 
 Draw the word and send to the Second Player.\
 Wait for Second Player Guess.\
@@ -25,10 +25,9 @@ Wait for Second Player Guess.\
 # Second Player start as the Guesser.
 Wait For Player One Draw.\
 Guess The Draw.\
-When Guess right the roles switch.\
-
+When Guess right the roles switch.
 
 #Languages/Frameworks :
 Server - Backend (NODE.JS).\
-Client - Fronted (REACT,JavaScript,HTML,CSS).\
+Client - Fronted (REACT,JavaScript,HTML,CSS).
 
