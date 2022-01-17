@@ -10,10 +10,10 @@ import "./DrawingView.css";
 
 const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
   window.addEventListener("resize", () => {
-    setHeight(window.screen.height - 310);
+    setHeight(window.screen.height - 330);
     setWidth(window.screen.width);
   });
-  const [height, setHeight] = useState(window.screen.height - 310);
+  const [height, setHeight] = useState(window.screen.height - 330);
   const [width, setWidth] = useState(window.screen.width);
 
   const [wordChoosing, setWordChoosing] = useState(null);
@@ -43,7 +43,6 @@ const DrawingView = ({ onSendClick, waiting, chooseWord }) => {
   };
 
   const sendImg = () => {
-    console.log("send image", canvasRef.current.getSaveData());
     onSendClick(canvasRef.current.getSaveData());
   };
 
