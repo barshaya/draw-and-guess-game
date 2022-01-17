@@ -11,7 +11,7 @@ When Second Player logged in the GAME START.\
 A Third Player or more cannot logged in
 
 # Game Start
-*First Player start as the Drawer*.\
+**First Player start as the Drawer.**
 choose a word :
 \
 Hard Word   ---> 5 points.\
@@ -22,7 +22,7 @@ Draw the word and send to the Second Player.\
 Wait for Second Player Guess.\
 
 
-# Second Player start as the Guesser.
+**Second Player start as the Guesser.**
 Wait For Player One Draw.\
 Guess The Draw.\
 When Guess right the roles switch.
