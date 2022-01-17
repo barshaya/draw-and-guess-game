@@ -27,7 +27,7 @@ Wait For Player One Draw.\
 Guess The Draw.\
 When Guess right the roles switch.
 
-#Languages/Frameworks :
+# Languages/Frameworks
 Server - Backend (NODE.JS).\
 Client - Fronted (REACT, JavaScript, HTML, CSS).
 
