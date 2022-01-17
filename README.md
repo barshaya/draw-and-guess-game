@@ -8,10 +8,10 @@ In another terminal process run cd client; npm i; npm start.
 # Create A Game
 log in with your username and wait for a Second Player.\
 When Second Player logged in the GAME START.\
-***A Third Player or more cannot logged in***
+A Third Player or more cannot logged in
 
 # Game Start
-# First Player start as the Drawer.\
+*First Player start as the Drawer*.\
 choose a word :
 \
 Hard Word   ---> 5 points.\
