@@ -134,7 +134,7 @@ const GameScreen = () => {
           <h3>Success!</h3>
           <h4>you earn {newPoints} points</h4>
           <button
-            class="success-close"
+            className="success-close"
             onClick={() => {
               changeRoles();
             }}
