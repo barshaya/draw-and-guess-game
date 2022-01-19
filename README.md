@@ -1,19 +1,19 @@
-<font color="green"> Draw & Guess Game </font>
+# Draw & Guess Game
 
 find a friend to play with and try my app! 
 https://game-draw-and-guess.herokuapp.com/
 
-# Run Locally
+### Run Locally
 Clone this project.\
 In terminal process run cd server; npm i.\
 In another terminal process run cd client; npm i; npm start.
 
-#### Create A Game
+### Create A Game
 log in with your username and wait for a Second Player.\
 When Second Player logged in --> GAME START.\
 !!! A Third Player or more cannot logged in !!!
 
-#### Game Start
+### Game Start
 *****First Player start as the Drawer.***** \
 choose a word :
 \
@@ -30,7 +30,7 @@ Wait For Player One Draw.\
 Guess The Draw.\
 When Guess right the roles switch.
 
-#### Languages/Frameworks
+### Languages/Frameworks
 Server - Backend \
 <a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="html5" width="80" height="80"/> </a> 
 
@@ -40,5 +40,5 @@ Client - Fronted\
 <a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="60" height="60"/> </a> 
 <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="60" height="60"/> </a> 
 
-##### Game Video
+### Game Video
 https://user-images.githubusercontent.com/74703704/149776564-64ac9381-3642-42da-ac4f-6635fe21561c.mp4
