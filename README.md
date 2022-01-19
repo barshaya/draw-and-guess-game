@@ -1,14 +1,17 @@
-# Draw & Guess Game
+<font color="green"> # Draw & Guess Game </font>
 
-Run Locally.\
+find a friend to play with and try my app! 
+https://game-draw-and-guess.herokuapp.com/
+
+# Run Locally
 Clone this project.\
-In one terminal process run cd server; node index.js.\
+In terminal process run cd server; npm i.\
 In another terminal process run cd client; npm i; npm start.
 
 # Create A Game
 log in with your username and wait for a Second Player.\
-When Second Player logged in the GAME START.\
-A Third Player or more cannot logged in.
+When Second Player logged in --> GAME START.\
+!!! A Third Player or more cannot logged in !!!
 
 # Game Start
 *****First Player start as the Drawer.***** \
