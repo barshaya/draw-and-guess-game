@@ -55,12 +55,8 @@ const GameScreen = () => {
       setWaitForDraw(false);
       setIsLoading(true);
       alert(`winner is ${winner}`);
-      navigate("/");
       localStorage.removeItem("users");
-    });
-
-    socketService.on("clientDisconnect", () => {
-      localStorage.removeItem("users");
+      socketService.terminate()
       navigate("/");
     });
   }, []);

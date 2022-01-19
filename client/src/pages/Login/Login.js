@@ -18,6 +18,7 @@ const Login = () => {
     if (name) {
       const users = JSON.parse(localStorage.getItem("users")) || [];
       users.push({ name });
+      socketService.init()
       localStorage.setItem("users", JSON.stringify(users));
       socketService.emit("userLogged", name);
       navigate("/game-screen");

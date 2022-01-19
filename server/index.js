@@ -1,7 +1,8 @@
 const cors = require("cors");
 const app = require("express")();
-const express=require('express')
+const express = require("express");
 const http = require("http").createServer(app);
+const port = process.env.PORT || 4000;
 const io = require("socket.io")(http, {
   cors: {
     origin: "http://localhost:3000",
@@ -17,22 +18,21 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.static("public"));
 
-
+let sockets = [];
 let players = [];
 let score = [0, 0];
 let bool = true;
 
 io.on("connection", (socket) => {
+  sockets.push(socket);
   socket.on("userLogged", (userName) => {
     players.push(userName);
     if (players.length === 1) {
       socket.emit("setDrawing");
     }
     if (players.length === 2) {
-      socket.emit("startGame");
-      socket.broadcast.emit("startGame");
+      io.emit("startGame");
     }
-    
 
     socket.on("sentDrawing", (drawingVideo) => {
       socket.broadcast.emit("getDrawing", drawingVideo);
@@ -50,7 +50,6 @@ io.on("connection", (socket) => {
 
     socket.on("disconnect", () => {
       players = [];
-      socket.broadcast.emit("clientDisconnect");
     });
 
     socket.on("endGame", () => {
@@ -59,12 +58,11 @@ io.on("connection", (socket) => {
       if (score[0] > score[1]) win = "player 1";
       if (score[0] < score[1]) win = "player 2";
       io.emit("winner", win);
-      socket.disconnect();
+      sockets.forEach((s) => s.disconnect());
     });
   });
 });
-const port=process.env.PORT||4000
-console.log({port});
+
 http.listen(port, function () {
   console.log("listening on port 4000");
 });

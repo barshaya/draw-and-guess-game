@@ -1,10 +1,20 @@
 import io from "socket.io-client";
-let socket = io('/');
-console.log('socket changed?');
+let socket = null;
+console.log("socket changed?");
 export const socketService = {
   on,
   emit,
+  terminate,
+  init,
 };
+
+function init() {
+  socket = io("/");
+}
+
+function terminate() {
+  socket = null;
+}
 
 function on(eventName, cb) {
   socket.on(eventName, cb);

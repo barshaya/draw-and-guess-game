@@ -21,7 +21,6 @@ const GuessingView = ({ waiting, drawingVideo, success }) => {
 
   useEffect(() => {
     canvasObject = canvasRef.current;
-    console.log(canvasObject);
     if (canvasObject && drawingVideo) canvasObject.loadSaveData(drawingVideo);
   }, [waiting]);
 
