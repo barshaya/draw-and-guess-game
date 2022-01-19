@@ -11,8 +11,8 @@ In another terminal process run cd client; npm i; npm start.
 ### Create A Game
 log in with your username and wait for a Second Player.\
 When Second Player logged in --> GAME START.\
-!!! A ThHIRD PLAYER OR MORE CANNOT LOGGED IN !!!
-\
+!!! A ThHIRD PLAYER OR MORE CANNOT LOGGED IN !!! \
+
 ### Game Start
 *****First Player start as the Drawer.***** \
 choose a word :
@@ -26,8 +26,8 @@ Wait for Second Player Guess.
 *****Second Player start as the Guesser.***** \
 Wait For Player One Draw.\
 Guess The Draw.\
-When Guess right the roles switch.
-\
+When Guess right the roles switch.\
+
 ### Languages/Frameworks
 <a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="html5" width="80" height="80"/> </a> 
 \
