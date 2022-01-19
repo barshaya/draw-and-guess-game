@@ -1,6 +1,6 @@
 # Draw & Guess Game
 
-find a friend to play with and try my app! 
+find a friend to play with and try my app! \
 https://game-draw-and-guess.herokuapp.com/
 
 ### Run Locally
