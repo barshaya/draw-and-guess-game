@@ -31,6 +31,7 @@ io.on("connection", (socket) => {
       socket.emit("startGame");
       socket.broadcast.emit("startGame");
     }
+    
 
     socket.on("sentDrawing", (drawingVideo) => {
       socket.broadcast.emit("getDrawing", drawingVideo);
@@ -56,13 +57,13 @@ io.on("connection", (socket) => {
       if (score[0] == score[1]) win = "both";
       if (score[0] > score[1]) win = "player 1";
       if (score[0] < score[1]) win = "player 2";
-      socket.emit("winner", win);
-
+      io.emit("winner", win);
       socket.disconnect();
     });
   });
 });
-
-http.listen(4000, function () {
+const port=process.env.PORT||4000
+console.log({port});
+http.listen(port, function () {
   console.log("listening on port 4000");
 });
