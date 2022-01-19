@@ -1,5 +1,6 @@
 const cors = require("cors");
 const app = require("express")();
+const express=require('express')
 const http = require("http").createServer(app);
 const io = require("socket.io")(http, {
   cors: {
@@ -14,6 +15,7 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 app.use(cors(corsOptions));
+app.use(express.static("public"));
 
 let players = [];
 let score = [0, 0];
