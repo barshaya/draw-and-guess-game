@@ -27,7 +27,7 @@ Wait For Player One Draw.\
 Guess The Draw.\
 When Guess right the roles switch.
 
-# Video
+# Game Video
 https://user-images.githubusercontent.com/74703704/149776564-64ac9381-3642-42da-ac4f-6635fe21561c.mp4
 
 # Languages/Frameworks
