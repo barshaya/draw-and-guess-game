@@ -63,13 +63,8 @@ io.on("connection", (socket) => {
     });
   });
 });
-<<<<<<< HEAD:server/index.js
 const port=process.env.PORT||4000
 console.log({port});
 http.listen(port, function () {
-=======
-
-http.listen(process.env.PORT || 4000, function () {
->>>>>>> 7289a4fdd366e9408c278252cfe23b2184447799:index.js
   console.log("listening on port 4000");
 });

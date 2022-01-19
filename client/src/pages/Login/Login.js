@@ -11,18 +11,15 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  localStorage.removeItem("users");
+
   const login = () => {
     var name = userName.current.value;
     if (name) {
       const users = JSON.parse(localStorage.getItem("users")) || [];
-      if (users.length == 2) return;
-      if (users.length >= 0) {
-        users.push({ name, isDrawing: true });
-      } else {
-        users.push({ name, isDrawing: false });
-      }
+      users.push({ name });
       localStorage.setItem("users", JSON.stringify(users));
-      socketService.emit("userLogged", users[users.length - 1]);
+      socketService.emit("userLogged", name);
       navigate("/game-screen");
     } else {
       alert("Please enter your name");

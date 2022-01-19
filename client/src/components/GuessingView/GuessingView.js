@@ -10,10 +10,10 @@ import "./GuessingView.css";
 
 const GuessingView = ({ waiting, drawingVideo, success }) => {
   window.addEventListener("resize", () => {
-    setHeight(window.screen.height - 300);
+    setHeight(window.screen.height - 330);
     setWidth(window.screen.width);
   });
-  const [height, setHeight] = useState(window.screen.height - 300);
+  const [height, setHeight] = useState(window.screen.height - 330);
   const [width, setWidth] = useState(window.screen.width);
 
   var canvasRef = useRef(null);
