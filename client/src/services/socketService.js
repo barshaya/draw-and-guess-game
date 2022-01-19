@@ -1,5 +1,7 @@
 import io from "socket.io-client";
-let socket = io("http://localhost:4000");
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/' : '//localhost:4000';
+
+let socket = io(BASE_URL);
 console.log({ socket });
 export const socketService = {
   on,

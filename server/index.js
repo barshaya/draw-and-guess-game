@@ -17,6 +17,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.static("public"));
 
+
 let players = [];
 let score = [0, 0];
 let bool = true;
@@ -63,6 +64,6 @@ io.on("connection", (socket) => {
   });
 });
 
-http.listen(4000, function () {
+http.listen(process.env.PORT || 4000, function () {
   console.log("listening on port 4000");
 });
