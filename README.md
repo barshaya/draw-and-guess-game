@@ -1,4 +1,4 @@
-<img width="288" height="200" alt="draw and game app" src="https://user-images.githubusercontent.com/74703704/150203050-43d9fc8c-d55a-4d0b-bd5f-739a90d383cc.png">
+<img width="588" height="200" alt="draw and guess app" src="https://user-images.githubusercontent.com/74703704/150203050-43d9fc8c-d55a-4d0b-bd5f-739a90d383cc.png">
 find a friend to play with and try my app ! \
 https://game-draw-and-guess.herokuapp.com
 
