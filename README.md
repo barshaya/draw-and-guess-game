@@ -1,4 +1,4 @@
-<font color="green"> # Draw & Guess Game </font>
+<font color="green"> Draw & Guess Game </font>
 
 find a friend to play with and try my app! 
 https://game-draw-and-guess.herokuapp.com/
