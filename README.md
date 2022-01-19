@@ -35,7 +35,7 @@ https://user-images.githubusercontent.com/74703704/149776564-64ac9381-3642-42da-
 
 # Languages/Frameworks
 Server - Backend (NODE.JS).\
-<a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/node/node-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> 
+<a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> 
 
 Client - Fronted 
  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a>
