@@ -33,6 +33,10 @@ io.on("connection", (socket) => {
     if (players.length === 2) {
       io.emit("startGame");
     }
+    if (players.length > 2) {
+      return;
+    }
+
 
     socket.on("sentDrawing", (drawingVideo) => {
       socket.broadcast.emit("getDrawing", drawingVideo);
