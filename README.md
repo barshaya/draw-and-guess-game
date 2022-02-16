@@ -10,7 +10,7 @@ In another terminal process run cd client; npm i; npm start.
 
 ### Create A Game
 log in with your username and wait for a Second Player.\
-When Second Player logged in --> GAME START.\
+When The Second Player logged in --> GAME START.\
 !!! A THIRD PLAYER OR MORE CANNOT LOGGED IN !!! 
 
 ### Game Start
